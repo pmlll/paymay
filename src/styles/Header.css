@@ -8,28 +8,36 @@
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .nav {
     display: flex;
     gap: 15px;
+    align-items: center; /* Вирівнює елементи по вертикалі по центру */
 }
 
 .nav-button {
     background-color: transparent;
     color: #fff;
     border: 1px solid #fff;
-    padding: 5px 20px;
+    padding: 10px 15px;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px; /* Фіксована ширина для всіх кнопок */
+    white-space: nowrap; /* Заборона переносу тексту на новий рядок */
 }
 
 .nav-button:hover {
     background-color: #fff;
     color: #333;
 }
+
 
 .logof {
     display: flex;

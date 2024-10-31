@@ -9,7 +9,7 @@ const TransactionHistory = () => {
 
     return (
         <div className="transaction-history full-width">
-            <h2>Transaction History</h2>
+            <h2>Історія транзакцій</h2>
             <ul>
                 {transactions.map((transaction) => (
                     <li key={transaction.id}>

@@ -17,23 +17,23 @@ const TopUpForm = ({ onTopUp }) => {
 
     return (
         <form onSubmit={handleSubmit} className="top-up-form full-width">
-            <h2>Top Up Account</h2>
+            <h2>Поповнити баланс</h2>
             <input
                 type="text"
-                placeholder="Card Number"
+                placeholder="Номер картки"
                 value={cardNumber}
                 onChange={(e) => setCardNumber(e.target.value)}
                 required
             />
             <input
                 type="text"
-                placeholder="Expiry Date (MM/YY)"
+                placeholder="Дійсна до (MM/YY)"
                 value={expiry}
                 onChange={(e) => setExpiry(e.target.value)}
                 required
             />
             <input
-                type="text"
+                type="password"
                 placeholder="CVV"
                 value={cvv}
                 onChange={(e) => setCvv(e.target.value)}
@@ -41,12 +41,12 @@ const TopUpForm = ({ onTopUp }) => {
             />
             <input
                 type="number"
-                placeholder="Amount"
+                placeholder="Кількість"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 required
             />
-            <button type="submit">Top Up</button>
+            <button type="submit">Поповнити</button>
         </form>
     );
 };

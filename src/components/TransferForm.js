@@ -13,17 +13,17 @@ const TransferForm = ({ onTransfer }) => {
 
     return (
         <form onSubmit={handleSubmit} className="transfer-form full-width">
-            <h2>Transfer Funds</h2>
+            <h2>Перевести кошти</h2>
             <input
                 type="number"
-                placeholder="Amount"
+                placeholder="Кількість"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 required
             />
             <input
                 type="text"
-                placeholder="Recipient"
+                placeholder="Отримувач"
                 value={recipient}
                 onChange={(e) => setRecipient(e.target.value)}
                 required
