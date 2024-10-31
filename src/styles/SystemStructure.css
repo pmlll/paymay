@@ -1,0 +1,75 @@
+.system-structure {
+    font-family: Arial, sans-serif;
+    padding: 0 2rem;
+    color: #333;
+}
+
+.intro {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.architecture-diagram {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.diagram-image {
+    width: 80%;
+    max-width: 600px;
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.components {
+    padding: 2rem 0;
+}
+
+.components h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.component {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+}
+
+.transaction-process {
+    padding: 2rem 0;
+}
+
+.transaction-process h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.transaction-process ol {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+.cta {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
