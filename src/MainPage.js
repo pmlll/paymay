@@ -13,30 +13,32 @@ import './App.css';
 
 const App = () => {
     const [balance, setBalance] = useState(1000);
-    const user = { name: 'Maksym Hanych', email: 'hanych.maksym@student.uzhnu.edu.ua', status: 'Active' };
+    const [transactions, setTransactions] = useState([]);
+    const user = { name: 'Ганич Максим Віталійович', email: 'hanych.maksym@student.uzhnu.edu.ua', status: 'Активний' };
 
     const handleTransfer = ({ amount }) => {
         setBalance(balance - parseFloat(amount));
+        setTransactions([...transactions, { type: 'Transfer', amount: -parseFloat(amount), date: new Date().toLocaleString() }]);
         alert(`Transferred $${amount}`);
     };
 
     const handleTopUp = ({ amount }) => {
         setBalance(balance + parseFloat(amount));
+        setTransactions([...transactions, { type: 'Top-up', amount: parseFloat(amount), date: new Date().toLocaleString() }]);
         alert(`Account topped up with $${amount}`);
     };
 
     return (
-
-            <div className="app dark-theme">
-                <Profile user={user} />
-                <AccountBalance balance={balance} />
-                <TransferForm onTransfer={handleTransfer} />
-                <TopUpForm onTopUp={handleTopUp} />
-                <TransactionHistory />
-                <Partners />
-            </div>
-
+        <div className="app dark-theme">
+            <Profile user={user} />
+            <AccountBalance balance={balance} />
+            <TransferForm onTransfer={handleTransfer} />
+            <TopUpForm onTopUp={handleTopUp} />
+            <TransactionHistory transactions={transactions} />
+            <Partners />
+        </div>
     );
 };
+
 
 export default App;

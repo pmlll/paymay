@@ -16,7 +16,7 @@ const TopUpForm = ({ onTopUp }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="top-up-form full-width">
+        <form onSubmit={handleSubmit} className="content-block">
             <h2>Поповнити баланс</h2>
             <input
                 type="text"

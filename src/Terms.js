@@ -6,7 +6,7 @@ const Terms = () => {
     return (
         <div className="termspage">
             {/* Hero Section */}
-            <section className="hero">
+            <section className="content-blockU">
                 <h1>Умови користування</h1>
                 <p>Будь ласка, ознайомтеся з нашими умовами перед використанням сервісу.</p>
             </section>

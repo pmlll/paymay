@@ -8,7 +8,7 @@ const AboutUs = () => {
     return (
         <div className="aboutpage">
             {/* Hero Section */}
-            <section className="hero">
+            <section className="content-blockU">
                 <img src={card} alt="" className="hero-card" />
                 <h1>Довіра та Інновації у Світі Банківських Послуг</h1>
                 <p>Ми змінюємо світ фінансових послуг, створюючи прості та доступні рішення для кожного клієнта.</p>

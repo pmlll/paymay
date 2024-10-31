@@ -9,7 +9,7 @@ const Partners = () => {
     ];
 
     return (
-        <div className="partners full-width">
+        <div className="content-block">
             <h2>Наші партнери</h2>
             <div className="partners-list">
                 {partners.map((partner, index) => (

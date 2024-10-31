@@ -78,3 +78,91 @@ button:hover {
   margin-bottom: 5px;
 }
 
+.account-balance {
+  background: linear-gradient(135deg, #7b1fa2, #512da8);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(123, 31, 162, 0.5);
+  color: #ffffff;
+  text-align: center;
+}
+
+.account-balance h2 {
+  margin-bottom: 10px;
+  color: #ffffff; /* Світлий відтінок для заголовка */
+}
+
+.account-balance p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.transaction-history {
+  background-color: #1e1e2e;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  color: #f1f1f1;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  max-height: 300px; /* Максимальна висота з прокруткою */
+}
+
+.transaction-history h2 {
+  color: #bb86fc;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.content-block {
+  background-color: #1e1e2e;
+  border-radius: 10px;
+  padding: 20px;
+  color: #f1f1f1;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+
+.content-block h2 {
+  color: #bb86fc;
+  margin-bottom: 10px;
+}
+
+.content-blockU {
+  background-color: #1e1e2e;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px;
+  color: #f1f1f1;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+
+.content-blockU h2 {
+  color: #bb86fc;
+  margin-bottom: 10px;
+}
+.content-blockU h1 {
+  color: #f1f1f1;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.content-blockU p {
+  color: #bb86fc;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
