@@ -3,7 +3,7 @@ import React from 'react';
 const TransactionHistory = ({ transactions }) => {
     return (
         <div className="transaction-history full-width">
-            <h2>Transaction History</h2>
+            <h2>Історія транзакцій</h2>
             {transactions.length === 0 ? (
                 <p>No transactions yet</p>
             ) : (

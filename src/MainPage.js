@@ -18,14 +18,14 @@ const App = () => {
 
     const handleTransfer = ({ amount }) => {
         setBalance(balance - parseFloat(amount));
-        setTransactions([...transactions, { type: 'Transfer', amount: -parseFloat(amount), date: new Date().toLocaleString() }]);
-        alert(`Transferred $${amount}`);
+        setTransactions([...transactions, { type: 'Переказ', amount: -parseFloat(amount), date: new Date().toLocaleString() }]);
+        alert(`Переказ на $${amount} виконано.`);
     };
 
     const handleTopUp = ({ amount }) => {
         setBalance(balance + parseFloat(amount));
-        setTransactions([...transactions, { type: 'Top-up', amount: parseFloat(amount), date: new Date().toLocaleString() }]);
-        alert(`Account topped up with $${amount}`);
+        setTransactions([...transactions, { type: 'Поповнення', amount: parseFloat(amount), date: new Date().toLocaleString() }]);
+        alert(`Акаунт поповнено на $${amount}`);
     };
 
     return (
