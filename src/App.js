@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Login from './LoginStart';
+import Loginstart from './LoginStart';
 import About from './AboutUs';
 
 import AccountBalance from './components/AccountBalance';
@@ -14,30 +14,25 @@ import './App.css';
 import MainPage from "./MainPage";
 import Terms from "./Terms";
 import Footer from "./components/Footer"
+import Login from "./login"
+import AuthCheck from "./AuthCheck";
+import Signup from "./sighnup";
 
 const App = () => {
     const [balance, setBalance] = useState(1000);
-    const user = { name: 'Maksym Hanych', email: 'hanych.maksym@student.uzhnu.edu.ua', status: 'Active' };
-
-    const handleTransfer = ({ amount }) => {
-        setBalance(balance - parseFloat(amount));
-        alert(`Transferred $${amount}`);
-    };
-
-    const handleTopUp = ({ amount }) => {
-        setBalance(balance + parseFloat(amount));
-        alert(`Account topped up with $${amount}`);
-    };
 
     return (
         <Router>
             <div className="app dark-theme">
                 <Header />
                 <Routes>
-                    <Route path="/" element={<MainPage />} />
+                    <Route path="/" element={<AuthCheck><MainPage /></AuthCheck>} />
+                    <Route path="/loginstart" element={<AuthCheck><Loginstart /></AuthCheck>} />
+                    <Route path="/terms" element={<AuthCheck><Terms /></AuthCheck>} />
+                    <Route path="/about" element={<AuthCheck><About /></AuthCheck>} />
+                    <Route path="/signup" element={<Signup />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/terms" element={<Terms />} />
-                    <Route path="/about" element={<About />} />
+
                 </Routes>
             </div>
             <Footer />
