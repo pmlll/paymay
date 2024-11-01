@@ -1,35 +1,51 @@
 // Header.js
-import React from 'react';
-import { Link, useNavigate } from "react-router-dom"; // Import necessary modules
-import { signOut } from 'firebase/auth'; // Import signOut from firebase/auth
-import { auth } from '../firebase'; // Import the auth instance
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 import '../styles/Header.css';
 import logoA from "../img/logo.png";
 
 const Header = () => {
-    const navigate = useNavigate(); // Hook for navigation
+    const navigate = useNavigate();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    // Function to handle logout
+    // Проверка состояния пользователя
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setIsAuthenticated(!!user);
+        });
+
+        // Очистка слушателя при размонтировании компонента
+        return () => unsubscribe();
+    }, []);
+
+    // Функция для выхода
     const handleLogout = async () => {
         try {
-            await signOut(auth); // Use the auth instance to sign out
-            navigate('/login'); // Redirect to login page after logout
+            await signOut(auth);
+            navigate('/login');
         } catch (error) {
-            console.error("Error signing out: ", error); // Handle any errors
+            console.error("Error signing out: ", error);
         }
     };
 
     return (
         <header className="header full-width">
             <div className="logof">
-                <img src={logoA} alt="" className="logo-image" />
+                <img src={logoA} alt="Логотип" className="logo-image" />
             </div>
             <nav className="nav">
                 <Link to="/" className="nav-button">Головна</Link>
                 <Link to="/about" className="nav-button">Про нас</Link>
                 <Link to="/terms" className="nav-button">Умови</Link>
-                <Link to="/login" className="nav-button">Вхід</Link>
-                <button onClick={handleLogout} className="nav-button1">Вихід</button> {/* Logout button */}
+
+
+                {isAuthenticated ? (
+                    <button onClick={handleLogout} className="nav-button1">Вихід</button>
+                ) : (
+                    <button className="nav-button1">Вхід</button>
+                )}
             </nav>
         </header>
     );

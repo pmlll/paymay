@@ -33,7 +33,7 @@ const TopUpForm = ({ onTopUp }) => {
                 required
             />
             <input
-                type="password"
+                type="text"
                 placeholder="CVV"
                 value={cvv}
                 onChange={(e) => setCvv(e.target.value)}

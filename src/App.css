@@ -39,7 +39,7 @@ input, button {
 
 button {
   width: 99.5%;
-  background-color: #3f51b5;
+  background: linear-gradient(135deg, #7b1fa2, #512da8);
   color: #ffffff;
   font-weight: bold;
   cursor: pointer;
