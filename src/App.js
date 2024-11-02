@@ -19,7 +19,7 @@ const App = () => {
     const [balance, setBalance] = useState(1000);
 
     return (
-        <Router>
+        <Router basename="/paymay">
             <ErrorBoundary>
             <div className="app dark-theme">
                 <Header />
