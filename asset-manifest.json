@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/paymay/static/css/main.480eb319.css",
+    "main.js": "/paymay/static/js/main.02340821.js",
+    "static/js/453.90c8ff76.chunk.js": "/paymay/static/js/453.90c8ff76.chunk.js",
+    "static/media/uzhnu.jpg": "/paymay/static/media/uzhnu.6e11c3f0facd04f1b89e.jpg",
+    "static/media/card.png": "/paymay/static/media/card.3a6e1e434912b750174a.png",
+    "static/media/logo.png": "/paymay/static/media/logo.97a5723544c0a7c3f2d2.png",
+    "index.html": "/paymay/index.html",
+    "main.480eb319.css.map": "/paymay/static/css/main.480eb319.css.map",
+    "main.02340821.js.map": "/paymay/static/js/main.02340821.js.map",
+    "453.90c8ff76.chunk.js.map": "/paymay/static/js/453.90c8ff76.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.480eb319.css",
+    "static/js/main.02340821.js"
+  ]
+}
