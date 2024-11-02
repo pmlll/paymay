@@ -39,8 +39,6 @@ const Header = () => {
                 <Link to="/" className="nav-button">Головна</Link>
                 <Link to="/about" className="nav-button">Про нас</Link>
                 <Link to="/terms" className="nav-button">Умови</Link>
-
-
                 {isAuthenticated ? (
                     <button onClick={handleLogout} className="nav-button1">Вихід</button>
                 ) : (

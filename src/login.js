@@ -12,7 +12,6 @@ const Login = () => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in
                 const user = userCredential.user;
                 navigate("/")
                 console.log(user);
@@ -73,9 +72,9 @@ const Login = () => {
                         </form>
 
                         <p className="text-sm text-white text-center">
-                            No account yet? {' '}
+                            Не маєш акаунту? {' '}
                             <NavLink to="/signup">
-                                Sign up
+                                Реєстрація
                             </NavLink>
                         </p>
 

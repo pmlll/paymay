@@ -8,6 +8,7 @@ import TransferForm from './components/TransferForm';
 import TopUpForm from './components/TopUpForm';
 import TransactionHistory from './components/TransactionHistory';
 import Profile from './components/Profile';
+import Partners from "./components/Partners";
 
 const MainPage = () => {
     const [balance, setBalance] = useState(0); // Start with 0 for balance
@@ -28,10 +29,9 @@ const MainPage = () => {
                         email: currentUser.email,
                         status: 'Активний',
                     });
-                    setBalance(parseFloat(userData.balance) || 0); // Ensure balance is a number
+                    setBalance(parseFloat(userData.balance) || 0);
                     setTransactions(userData.transactions || []);
                 } else {
-                    // If no document exists, initialize it
                     await setDoc(userDocRef, {
                         balance: 1200,
                         transactions: []
@@ -66,21 +66,15 @@ const MainPage = () => {
             alert('Низький баланс.');
             return;
         }
-
-
         const recipientQuery = query(collection(db, 'users'), where('email', '==', recipient));
         const recipientSnapshot = await getDocs(recipientQuery);
-
         if (recipientSnapshot.empty) {
             alert('Користувача неіснує.');
             return;
         }
-
         const recipientDoc = recipientSnapshot.docs[0];
         const recipientData = recipientDoc.data();
-        const recipientNewBalance = (parseFloat(recipientData.balance) || 0) + transferAmount; // Parse recipient balance
-
-
+        const recipientNewBalance = (parseFloat(recipientData.balance) || 0) + transferAmount;
         await updateDoc(doc(db, 'users', recipientDoc.id), {
             balance: recipientNewBalance
         });
@@ -120,6 +114,7 @@ const MainPage = () => {
             <TransferForm onTransfer={handleTransfer} />
             <TopUpForm onTopUp={handleTopUp} />
             <TransactionHistory transactions={transactions} />
+            <Partners />
         </div>
     );
 };

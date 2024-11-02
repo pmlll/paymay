@@ -97,9 +97,9 @@ const Signup = () => {
                         </form>
 
                         <p>
-                            Already have an account?{' '}
+                           Вже маєш акаунт?{' '}
                             <NavLink to="/login">
-                                Sign in
+                                Вхід
                             </NavLink>
                         </p>
                     </div>
