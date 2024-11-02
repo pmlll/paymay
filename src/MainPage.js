@@ -1,62 +1,116 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { auth } from './firebase'; // Import the Firebase configuration
+import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { collection, query, where, getDocs, doc, getDoc, setDoc, updateDoc, getFirestore } from 'firebase/firestore';
 
 import AccountBalance from './components/AccountBalance';
 import TransferForm from './components/TransferForm';
 import TopUpForm from './components/TopUpForm';
-import Partners from './components/Partners';
 import TransactionHistory from './components/TransactionHistory';
 import Profile from './components/Profile';
-import Header from './components/Header';
-import './App.css';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
-const App = () => {
-    const [balance, setBalance] = useState(1000);
+
+const MainPage = () => {
+    const [balance, setBalance] = useState(0); // Start with 0 for balance
     const [transactions, setTransactions] = useState([]);
-    const [user, setUser] = useState(null); // State to hold user information
+    const [user, setUser] = useState(null);
     const db = getFirestore();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
             if (currentUser) {
-                // Get user data from Firestore
-                const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+                const userDocRef = doc(db, 'users', currentUser.uid);
+                const userDoc = await getDoc(userDocRef);
 
                 if (userDoc.exists()) {
                     const userData = userDoc.data();
                     setUser({
-                        name: userData.name || 'Unnamed User', // Get name from Firestore
-                        email: currentUser.email,
-                        status: 'Активний', // Modify this based on your app logic
-                    });
-                } else {
-                    // Handle case where user document does not exist
-                    setUser({
-                        name: 'Unnamed User',
+                        name: userData.name || 'Unnamed User',
                         email: currentUser.email,
                         status: 'Активний',
                     });
+                    setBalance(parseFloat(userData.balance) || 0); // Ensure balance is a number
+                    setTransactions(userData.transactions || []);
+                } else {
+                    // If no document exists, initialize it
+                    await setDoc(userDocRef, {
+                        balance: 1200,
+                        transactions: []
+                    });
+                    setBalance(1200);
                 }
             } else {
-                setUser(null); // User is signed out
+                setUser(null);
             }
         });
 
-        return () => unsubscribe(); // Cleanup subscription on unmount
+        return () => unsubscribe();
     }, [db]);
 
-    const handleTransfer = ({ amount }) => {
-        setBalance(balance - parseFloat(amount));
-        setTransactions([...transactions, { type: 'Переказ', amount: -parseFloat(amount), date: new Date().toLocaleString() }]);
-        alert(`Переказ на $${amount} виконано.`);
+    const updateBalanceInFirestore = async (newBalance, newTransactions) => {
+        if (!user) return;
+
+        const userDocRef = doc(db, 'users', auth.currentUser.uid);
+        await updateDoc(userDocRef, {
+            balance: newBalance,
+            transactions: newTransactions
+        });
+    };
+
+    const handleTransfer = async ({ amount, recipient }) => {
+        const transferAmount = parseFloat(amount);
+        if (isNaN(transferAmount) || transferAmount <= 0) {
+            alert('Введіть додатнє число.');
+            return;
+        }
+        if (transferAmount > balance) {
+            alert('Низький баланс.');
+            return;
+        }
+
+
+        const recipientQuery = query(collection(db, 'users'), where('email', '==', recipient));
+        const recipientSnapshot = await getDocs(recipientQuery);
+
+        if (recipientSnapshot.empty) {
+            alert('Користувача неіснує.');
+            return;
+        }
+
+        const recipientDoc = recipientSnapshot.docs[0];
+        const recipientData = recipientDoc.data();
+        const recipientNewBalance = (parseFloat(recipientData.balance) || 0) + transferAmount; // Parse recipient balance
+
+
+        await updateDoc(doc(db, 'users', recipientDoc.id), {
+            balance: recipientNewBalance
+        });
+
+        const newSenderBalance = balance - transferAmount;
+        const newTransaction = { type: 'Transfer', amount: -transferAmount, recipient, date: new Date().toLocaleString() };
+
+
+        setBalance(newSenderBalance);
+        setTransactions(prev => [...prev, newTransaction]);
+
+        await updateBalanceInFirestore(newSenderBalance, [...transactions, newTransaction]);
+
+        alert(`Переказано $${transferAmount} на ${recipient}.`);
     };
 
     const handleTopUp = ({ amount }) => {
-        setBalance(balance + parseFloat(amount));
-        setTransactions([...transactions, { type: 'Поповнення', amount: parseFloat(amount), date: new Date().toLocaleString() }]);
-        alert(`Акаунт поповнено на $${amount}`);
+        const topUpAmount = parseFloat(amount);
+        if (isNaN(topUpAmount) || topUpAmount <= 0) {
+            alert('Введіть додатнє число.');
+            return;
+        }
+
+        const updatedBalance = balance + topUpAmount;
+        const newTransaction = { type: 'Поповнення', amount: topUpAmount, date: new Date().toLocaleString() };
+
+        setBalance(updatedBalance);
+        setTransactions(prev => [...prev, newTransaction]);
+        updateBalanceInFirestore(updatedBalance, [...transactions, newTransaction]);
+        alert(`Акаунт поповнено на $${topUpAmount}`);
     };
 
     return (
@@ -66,9 +120,8 @@ const App = () => {
             <TransferForm onTransfer={handleTransfer} />
             <TopUpForm onTopUp={handleTopUp} />
             <TransactionHistory transactions={transactions} />
-            <Partners />
         </div>
     );
 };
 
-export default App;
+export default MainPage;

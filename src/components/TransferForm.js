@@ -23,7 +23,7 @@ const TransferForm = ({ onTransfer }) => {
             />
             <input
                 type="text"
-                placeholder="Отримувач"
+                placeholder="Пошта отримувача"
                 value={recipient}
                 onChange={(e) => setRecipient(e.target.value)}
                 required

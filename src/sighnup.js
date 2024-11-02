@@ -19,11 +19,12 @@ const Signup = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            // Save user's name to Firestore
+            // Save user's name and initialize balance in Firestore
             await setDoc(doc(db, 'users', user.uid), {
                 name: name,
                 email: email,
-                // Add more fields as necessary
+                balance: 1200,  // Initialize balance with 1200
+                transactions: []  // Empty transactions list
             });
 
             console.log(user);
