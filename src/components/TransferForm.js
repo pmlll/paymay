@@ -13,7 +13,7 @@ const TransferForm = ({ onTransfer }) => {
 
     return (
         <form onSubmit={handleSubmit} className="content-block">
-            <h2>Перевести кошти</h2>
+            <h2>Переказати кошти</h2>
             <input
                 type="number"
                 placeholder="Кількість"

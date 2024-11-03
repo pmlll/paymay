@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles/Terms.css';
-import Header from "./components/Header";
+import '../styles/Terms.css';
+
 
 const Terms = () => {
     return (

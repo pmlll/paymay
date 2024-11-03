@@ -1,26 +1,22 @@
-import React, { useState } from 'react';
-import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Loginstart from './LoginStart';
-import About from './AboutUs';
-
-
+import React from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Loginstart from './pages/LoginStart';
+import About from './pages/AboutUs';
 import Header from './components/Header';
 import './App.css';
-import MainPage from "./MainPage";
-import Terms from "./Terms";
+import MainPage from "./pages/MainPage";
+import Terms from "./pages/Terms";
 import Footer from "./components/Footer"
-import Login from "./login"
+import Login from "./pages/login"
 import AuthCheck from "./AuthCheck";
-import Signup from "./sighnup";
+import Signup from "./pages/sighnup";
 import ErrorPage from "./ErrorPage";
-import ErrorBoundary from "./ErrorBoundary";
+
 
 const App = () => {
-    const [balance, setBalance] = useState(1000);
-
     return (
         <Router>
-            <ErrorBoundary>
+
             <div className="app dark-theme">
                 <Header />
                 <Routes>
@@ -34,7 +30,7 @@ const App = () => {
                 </Routes>
             </div>
             <Footer />
-                </ErrorBoundary>
+
         </Router>
     );
 };

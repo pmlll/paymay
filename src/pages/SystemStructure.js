@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/SystemStructure.css';
+import '../styles/SystemStructure.css';
 
 const SystemStructure = () => {
     return (

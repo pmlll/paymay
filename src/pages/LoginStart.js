@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles/LoginStart.css';
-import Header from "./components/Header";
+import '../styles/LoginStart.css';
+
 
 
 const LoginStart = () => {

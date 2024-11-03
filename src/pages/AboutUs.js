@@ -1,7 +1,7 @@
 import React from 'react';
-import './styles/AboutUs.css';
-import uzhnu from './img/uzhnu.jpg';
-import card from './img/card.png';
+import '../styles/AboutUs.css';
+import uzhnu from '../img/uzhnu.jpg';
+import card from '../img/card.png';
 
 
 const AboutUs = () => {

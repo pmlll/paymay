@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { auth } from './firebase';
+import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, query, where, getDocs, doc, getDoc, setDoc, updateDoc, getFirestore } from 'firebase/firestore';
 
-import AccountBalance from './components/AccountBalance';
-import TransferForm from './components/TransferForm';
-import TopUpForm from './components/TopUpForm';
-import TransactionHistory from './components/TransactionHistory';
-import Profile from './components/Profile';
-import Partners from "./components/Partners";
+import AccountBalance from '../components/AccountBalance';
+import TransferForm from '../components/TransferForm';
+import TopUpForm from '../components/TopUpForm';
+import TransactionHistory from '../components/TransactionHistory';
+import Profile from '../components/Profile';
+import Partners from "../components/Partners";
 
 const MainPage = () => {
     const [balance, setBalance] = useState(0); // Start with 0 for balance
