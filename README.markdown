@@ -5,7 +5,8 @@ A sleek and modern banking app prototype developed as a **student and pet projec
 🌐 **Deployed at**: [https://paymay-fe82d.web.app](https://paymay-fe82d.web.app)
 
 ---
-
+ONLY IN UKRAINE LANGUAGE!
+---
 ## 🎯 Features
 
 - **Email-Based Transfers**: Send money to anyone using their email address, making transactions quick and intuitive.
