@@ -1,4 +1,4 @@
-# PayMay 💸
+# PayMay Uzhgorod National University students project (Pet project)
 
 A sleek and modern banking app prototype developed as a **student and pet project** by Maksym Hanych to showcase web development skills. PayMay allows users to transfer money instantly using just an email address, inspired by the simplicity of PayPal. Built with **React** and **Firebase**, this project demonstrates a clean, user-friendly interface and secure backend integration. Perfect for inclusion in a CV to highlight technical expertise and creativity.
 
@@ -28,7 +28,7 @@ Explore the design mockups for a glimpse of PayMay's user interface:
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, Tailwind CSS
+- **Frontend**: React, Vite, Tailwind CSS
 - **Backend**: Firebase (Firestore, Authentication)
 - **Language**: JavaScript
 - **Build Tool**: Create React App
